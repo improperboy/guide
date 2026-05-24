@@ -1,0 +1,52 @@
+name: Secure DevOps Pipeline
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  security-validation:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install Dependencies
+        working-directory: app
+        run: npm install
+
+      - name: Install OPA
+        run: |
+          curl -L -o opa https://openpolicyagent.org/downloads/latest/opa_linux_amd64_static
+          chmod +x opa
+          sudo mv opa /usr/local/bin/
+
+      - name: Validate Infrastructure Policies
+        run: |
+          opa eval \
+          --input deployment/deployment.json \
+          --data deployment/policy.rego \
+          "data.deployment.deny"
+
+      - name: Install Snyk
+        run: npm install -g snyk
+
+      - name: Authenticate Snyk
+        run: snyk auth ${{ secrets.SNYK_TOKEN }}
+
+      - name: Run Dependency Scan
+        working-directory: app
+        run: snyk test
+
+      - name: Build Docker Image
+        run: docker build -t inventory-service .
+
+      - name: Run Container Scan
+        run: snyk container test inventory-service

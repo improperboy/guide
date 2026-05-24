@@ -1,0 +1,71 @@
+whoami                    # Shows current logged-in user
+who                       # Displays logged-in users
+id                        # Shows user ID and group info
+
+sudo adduser username     # Creates a new user
+sudo passwd username      # Sets or changes user password
+su username               # Switches to another user
+sudo usermod -aG sudo username   # Gives sudo access to user
+sudo userdel username     # Deletes a user
+sudo userdel -r username  # Deletes user with home directory
+
+sudo groupadd groupname   # Creates a new group
+sudo usermod -aG groupname username   # Adds user to a group
+groups username           # Shows groups of a user
+
+pwd                       # Shows current directory
+ls                        # Lists files and folders
+ls -l                     # Detailed file listing
+ls -a                     # Shows hidden files
+
+cd folder                 # Changes directory
+cd ..                     # Moves one directory up
+cd ~                      # Goes to home directory
+
+mkdir folder              # Creates a directory
+mkdir -p folder/subfolder # Creates nested directories
+
+rmdir folder              # Removes empty directory
+rm file.txt               # Deletes a file
+rm -r folder              # Deletes directory recursively
+rm -rf folder             # Force deletes directory
+
+touch file.txt            # Creates an empty file
+cp file.txt file2.txt     # Copies file
+cp file.txt /path/        # Copies file to another location
+cp -r folder1 folder2     # Copies directory recursively
+
+mv old.txt new.txt        # Renames file
+mv file.txt /path/        # Moves file to another location
+
+cat file.txt              # Displays file content
+less file.txt             # Views file page by page
+head file.txt             # Shows first 10 lines
+tail file.txt             # Shows last 10 lines
+
+find /home -name "file.txt"   # Searches for a file
+grep "text" file.txt      # Searches text in file
+grep -r "text" .          # Searches text recursively
+
+chmod 755 file.sh         # Changes file permissions
+chmod 644 file.txt        # Sets read/write permissions
+
+sudo chown user file.txt  # Changes file owner
+sudo chown user:group file.txt   # Changes owner and group
+
+df -h                     # Shows disk usage
+du -sh folder             # Shows folder size
+
+ps aux                    # Displays running processes
+top                       # Shows live system processes
+kill PID                  # Stops a process
+kill -9 PID               # Force stops a process
+
+ping google.com           # Checks internet connectivity
+ip addr                   # Shows IP address info
+curl example.com          # Fetches webpage data
+wget URL                  # Downloads file from URL
+
+history                   # Shows command history
+clear                     # Clears terminal screen
+man ls                    # Opens manual for ls command

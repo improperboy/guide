@@ -1,0 +1,37 @@
+# Create files in docs
+for i in {1..15}
+do
+  touch /home/ubuntu/workspace/docs/doc$i.txt
+done
+
+# Create files in images
+for i in {1..25}
+do
+  touch /home/ubuntu/workspace/images/img$i.txt
+done
+
+# Set permissions for docs
+for i in {1..15}
+do
+  file="/home/ubuntu/workspace/docs/doc$i.txt"
+  
+  if [ $((i % 3)) -eq 0 ]
+  then
+    chmod 714 "$file"   # Selected: Owner=rwx(7), Group=x(1), Public=r(4)
+  else
+    chmod 640 "$file"   # Not Selected: Owner=rw(6), Group=-(0), Public=r(4)
+  fi
+done
+
+# Set permissions for images
+for i in {1..25}
+do
+  file="/home/ubuntu/workspace/images/img$i.txt"
+  
+  if [ $((i % 3)) -eq 0 ]
+  then
+    chmod 642 "$file"   # Selected: Owner=rw(6), Group=r(4), Public=x(1)
+  else
+    chmod 624 "$file"   # Not Selected: Owner=r(4), Group=w(2), Public=-(0)
+  fi
+done

@@ -1,0 +1,87 @@
+File & Directory Commands
+pwd         # Show current directory
+ls          # List files
+ls -l       # Detailed list
+ls -a       # Show hidden files
+
+cd folder   # Change directory
+cd ..       # Move up one directory
+cd ~        # Go to home directory
+
+mkdir test  # Create directory
+rmdir test  # Remove empty directory
+
+touch file.txt   # Create empty file
+cp a.txt b.txt   # Copy file
+mv a.txt b.txt   # Rename/move file
+rm file.txt      # Delete file
+rm -r folder     # Delete folder recursively
+Viewing File Contents
+cat file.txt     # Display file content
+less file.txt    # View file page by page
+head file.txt    # First 10 lines
+tail file.txt    # Last 10 lines
+tail -f log.txt  # Live log monitoring
+Search Commands
+find . -name "file.txt"   # Find file
+grep "word" file.txt      # Search text in file
+grep -r "word" .          # Recursive search
+Permissions
+chmod 755 script.sh   # Change permissions
+chown user:file a.txt # Change ownership
+
+Permission meanings:
+
+r = read
+w = write
+x = execute
+Process Management
+ps aux        # List processes
+top           # Live process monitor
+kill PID      # Kill process
+kill -9 PID   # Force kill
+System Information
+uname -a      # System info
+df -h         # Disk usage
+du -sh folder # Folder size
+free -h       # Memory usage
+uptime        # System uptime
+Networking
+ping google.com      # Check connectivity
+ifconfig             # Network info (older)
+ip addr              # Network info (modern)
+curl example.com     # Fetch webpage
+wget URL             # Download file
+Package Management
+Ubuntu/Debian
+sudo apt update
+sudo apt install nginx
+CentOS/RHEL
+sudo yum install nginx
+Compression
+tar -cvf files.tar folder/
+tar -xvf files.tar
+
+zip -r files.zip folder/
+unzip files.zip
+User Management
+whoami          # Current user
+adduser john    # Add user
+passwd john     # Change password
+Useful Shortcuts
+clear        # Clear terminal
+history      # Command history
+man ls       # Manual for command
+Ctrl + C     # Stop running command
+Ctrl + R     # Search history
+Beginner Tip
+
+Use:
+
+man <command>
+
+Example:
+
+man grep
+
+to learn detailed usage for any command.
